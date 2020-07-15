@@ -8,57 +8,110 @@
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
                 <input formControlName="code" name="code" class="form-control" placeholder="Code" type="text">
+                <div class="warning-validator" *ngIf="fgv.code.errors && (fgv.code.dirty || fgv.code.touched)">
+                    <strong *ngIf="fgv.code.errors.required">
+                        This field is required.
+                    </strong>
+                    <strong *ngIf="fgv.code.errors.minlength">
+                        This field must be at least 5 characters long.
+                    </strong>
+                </div>
             </div>
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input formControlName="document" name="document" class="form-control" placeholder="Document" type="text">
+                <input formControlName="document" name="document" class="form-control" placeholder="Document"
+                    type="text">
+                <div class="warning-validator"
+                    *ngIf="fgv.document.errors && (fgv.document.dirty || fgv.document.touched)">
+                    <strong *ngIf="fgv.document.errors.required">
+                        This field is required.
+                    </strong>
+                    <strong *ngIf="fgv.document.errors.minlength">
+                        This field must be at least 7 characters long.
+                    </strong>
+                </div>
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
                 <input formControlName="name" name="name" class="form-control" placeholder="Name" type="text">
+                <div class="warning-validator" *ngIf="fgv.name.errors && (fgv.name.dirty || fgv.name.touched)">
+                    <strong *ngIf="fgv.name.errors.required">
+                        This field is required.
+                    </strong>
+                    <strong *ngIf="fgv.name.errors.minlength">
+                        This field must be at least 2 characters long.
+                    </strong>
+                </div>
             </div>
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input formControlName="lastname" name="lastname" class="form-control" placeholder="Lastname" type="text">
+                <input formControlName="lastname" name="lastname" class="form-control" placeholder="Lastname"
+                    type="text">
+                <div class="warning-validator"
+                    *ngIf="fgv.lastname.errors && (fgv.lastname.dirty || fgv.lastname.touched)">
+                    <strong *ngIf="fgv.lastname.errors.required">
+                        This field is required.
+                    </strong>
+                    <strong *ngIf="fgv.lastname.errors.minlength">
+                        This field must be at least 2 characters long.
+                    </strong>
+                </div>
             </div>
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                 </div>
                 <input formControlName="email" name="email" class="form-control" placeholder="Email" type="email">
+                <div class="warning-validator" *ngIf="fgv.email.errors && (fgv.email.dirty || fgv.email.touched)">
+                    <strong *ngIf="fgv.email.errors.required">
+                        This field is required.
+                    </strong>
+                    <strong *ngIf="fgv.email.errors.email">
+                        This field must be an email valid format.
+                    </strong>
+                </div>
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                 </div>
                 <select formControlName="countryCode" class="custom-select" style="max-width: 120px;">
-                    <option value="+57">+57</option>
+                    <option selected value="+57">+57</option>
                     <option value="+36">++36</option>
                     <option value="+1">+1</option>
                 </select>
                 <input formControlName="cellphone" name="" class="form-control" placeholder="Phone number" type="text">
+                <div class="warning-validator"
+                    *ngIf="fgv.cellphone.errors && (fgv.cellphone.dirty || fgv.cellphone.touched)">
+                    <strong *ngIf="fgv.cellphone.errors.required">
+                        This field is required.
+                    </strong>
+                    <strong *ngIf="fgv.cellphone.errors.minlength">
+                        This field must be at least 10 characters long.
+                    </strong>
+                </div>
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                 </div>
-                <select class="form-control">
-                    <option selected=""> Select Career</option>
+                <select class="form-control" formControlName="career">
                     <option value="Designer">Designer</option>
                     <option value="Manager">Manager</option>
                     <option value="Accaunting">Accaunting</option>
-                    <option value="Systems and Computing Engineering">Systems and Computing Engineering</option>
+                    <option selected value="Systems and Computing Engineering">Systems and Computing Engineering</option>
                 </select>
             </div> <!-- form-group end.// -->
 
             <div class="form-group">
-                <button type="button" (click)="StudentRegister()" class="btn btn-primary btn-block"> Create Account </button>
+                <button type="button" (click)="StudentRegister()" class="btn btn-primary btn-block"> Create Account
+                </button>
             </div> <!-- form-group// -->
             <p class="text-center">Have an account? <a routerLink="/security/login">Log In</a> </p>
         </form>
