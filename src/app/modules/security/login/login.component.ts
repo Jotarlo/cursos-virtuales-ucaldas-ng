@@ -42,10 +42,16 @@ export class LoginComponent implements OnInit {
       ShowNotificationMessage('Invalid Form.');
     } else {
       let model = this.getLoginData();
-      console.log(model);
-      this.service.LoginUser(model).subscribe(data => {
-        
-      });
+      this.service.LoginUser(model).subscribe(
+        data => {
+          //ShowNotificationMessage('Welcome.');
+          let res = this.service.saveSession(data);
+          this.router.navigate(["/home"]);
+        },
+        err => {
+          ShowNotificationMessage('Invalid data, please enter a correct user and password.');
+        }
+      );
     }
   }
 
