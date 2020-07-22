@@ -10,6 +10,7 @@ import { SecurityService } from 'src/app/services/security.service';
 export class NavbarComponent implements OnInit {
 
   isLogged: Boolean = false;
+  role: number = 0;
 
   subscription: Subscription;
 
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.service.getUserData().subscribe(data => {
       this.isLogged = data.isLogged;
+      this.role = data.role;
     });
   }
 
