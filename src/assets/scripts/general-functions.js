@@ -3,4 +3,8 @@ function ShowNotificationMessage(message) {
     $('#messageModal').modal()
 }
 
+function ShowRemoveConfirmationModal(){
+    $('#removeConfirmationModal').modal();
+}
+
 //alert(`Hola 3`);

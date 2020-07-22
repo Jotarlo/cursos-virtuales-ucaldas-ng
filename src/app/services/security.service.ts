@@ -72,6 +72,11 @@ export class SecurityService {
     return currentSession;
   }
 
+  getToken(): String{
+    let currentSession = this.getSession();
+    return JSON.parse(currentSession).token;
+  }
+
   Logout() {
     localStorage.removeItem('session');
     this.setUserData(new UserModel());
