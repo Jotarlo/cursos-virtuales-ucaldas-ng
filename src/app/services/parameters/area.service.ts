@@ -24,6 +24,10 @@ export class AreaService {
     return this.http.get<AreaModel[]>(`${ServiceConfig.BASE_URL}${this.entity}`);
   }
 
+  getRecordById(recordId: String): Observable<AreaModel> {
+    return this.http.get<AreaModel>(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}`);
+  }
+
   saveNewRecord(record: AreaModel): Observable<AreaModel> {
     return this.http.post<AreaModel>(`${ServiceConfig.BASE_URL}${this.entity}`, record, {
       headers: new HttpHeaders({
@@ -32,5 +36,20 @@ export class AreaService {
     });
   }
 
+  editRecord(record: AreaModel): Observable<AreaModel> {
+    return this.http.put<AreaModel>(`${ServiceConfig.BASE_URL}${this.entity}/${record.id}`, record, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    });
+  }
+
+  removeRecord(recordId: String): Observable<any> {
+    return this.http.delete<any>(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    });
+  }
 
 }

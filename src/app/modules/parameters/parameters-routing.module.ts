@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AreaListComponent } from './area/area-list/area-list.component'
 import { AreaCreationComponent } from './area/area-creation/area-creation.component'
 import { AreaEditionComponent } from './area/area-edition/area-edition.component'
-import { AreaRemoveComponent } from './area/area-remove/area-remove.component'
 import { FacultyListComponent } from './faculty/faculty-list/faculty-list.component';
 import { FacultyCreationComponent } from './faculty/faculty-creation/faculty-creation.component';
 import { FacultyEditionComponent } from './faculty/faculty-edition/faculty-edition.component';
@@ -24,10 +23,6 @@ const routes: Routes = [
   {
     path: 'area-edition/:id',
     component: AreaEditionComponent
-  },
-  {
-    path: 'area-remove',
-    component: AreaRemoveComponent
   }, {
     path: 'faculty',
     component: FacultyListComponent
