@@ -15,19 +15,7 @@
                 <a *ngIf="role == 2" routerLink="/parameters/faculty">Faculty</a>
             </li>
             <li>
-                <a href="#">Overview</a>
-            </li>
-            <li>
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
+                <a *ngIf="role == 2" routerLink="/parameters/course/">Course</a>
             </li>
         </ul>
     </div>

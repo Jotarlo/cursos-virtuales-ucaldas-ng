@@ -55,7 +55,7 @@ export class AreaEditionComponent implements OnInit {
     });
   }
 
-  editNewRecord() {
+  editRecord() {
     if (this.fgValidator.invalid) {
       ShowNotificationMessage('Invalid Form');
     } else {
