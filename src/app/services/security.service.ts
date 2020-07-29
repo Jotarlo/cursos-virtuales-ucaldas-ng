@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { ServiceConfig } from '../config/service.config';
 import { StudentModel } from '../models/student.model';
 import { ResetPasswordModel } from '../models/security/reset-password.model';
+import { ChangePasswordModel } from '../models/security/change-password.model';
 
 
 @Injectable({
@@ -48,9 +49,17 @@ export class SecurityService {
     })
   }
 
-  ResetPassword(model: ResetPasswordModel): Observable<Boolean>{
+  ResetPassword(model: ResetPasswordModel): Observable<Boolean> {
     return this.http.post<Boolean>(`${ServiceConfig.BASE_URL}password-reset`, model, {
       headers: new HttpHeaders({
+      })
+    })
+  }
+
+  ChangePassword(model: ChangePasswordModel): Observable<Boolean> {
+    return this.http.post<Boolean>(`${ServiceConfig.BASE_URL}change-password`, model, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.getToken()}`
       })
     })
   }
@@ -103,7 +112,7 @@ export class SecurityService {
    */
   isUserRol(roleId): Boolean {
     let currentSession = this.getSession();
-    console.log(currentSession);    
+    console.log(currentSession);
     console.log("roleId: " + roleId);
     console.log(JSON.parse(currentSession).role == roleId);
     return JSON.parse(currentSession).role == roleId;
@@ -116,6 +125,12 @@ export class SecurityService {
     let currentSession = this.getSession();
     return JSON.parse(currentSession).token;
   }
+
+  getUserId(): String {
+    let currentSession = this.getSession();
+    return JSON.parse(currentSession).id;
+  }
+
 
   /**
    * close the current session
