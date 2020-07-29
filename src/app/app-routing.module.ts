@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './public/home/default/default.component';
-
+import { AuthenticatedAdminGuard } from './guards/authenticated-admin.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +23,8 @@ const routes: Routes = [
   },
   {
     path: 'parameters',
-    loadChildren: () => import('./modules/parameters/parameters.module').then(m => m.ParametersModule)
+    loadChildren: () => import('./modules/parameters/parameters.module').then(m => m.ParametersModule),
+    canActivate: [AuthenticatedAdminGuard]
   },
 
   /** This option always may be at the end */

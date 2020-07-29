@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserModel } from '../models/user.model';
+import { UserModel } from '../models/security/user.model';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ServiceConfig } from '../config/service.config';
 import { StudentModel } from '../models/student.model';
+import { ResetPasswordModel } from '../models/security/reset-password.model';
 
 
 @Injectable({
@@ -36,6 +37,10 @@ export class SecurityService {
     return this.userData.asObservable();
   }
 
+  /**
+   * Verify credentials of an user to login
+   * @param model Data to verify credentials
+   */
   LoginUser(model: UserModel): Observable<StudentModel> {
     return this.http.post<StudentModel>(`${ServiceConfig.BASE_URL}login`, model, {
       headers: new HttpHeaders({
@@ -43,6 +48,17 @@ export class SecurityService {
     })
   }
 
+  ResetPassword(model: ResetPasswordModel): Observable<Boolean>{
+    return this.http.post<Boolean>(`${ServiceConfig.BASE_URL}password-reset`, model, {
+      headers: new HttpHeaders({
+      })
+    })
+  }
+
+  /**
+   * Save data of new session
+   * @param sessionData Object with user in session data
+   */
   saveSession(sessionData: any): Boolean {
     console.log(sessionData);
     let currentSession = localStorage.getItem('session');
@@ -65,18 +81,45 @@ export class SecurityService {
     }
   }
 
-
+  /**
+   * Return data of session
+   */
   getSession() {
     let currentSession = localStorage.getItem('session');
-    console.log(currentSession);
+    //console.log(currentSession);
     return currentSession;
   }
 
-  getToken(): String{
+  /**
+   * Verify if a session is active
+   */
+  sessionExists(): Boolean {
+    return (this.getSession()) ? true : false;
+  }
+
+  /**
+   * Verify if the user in session has the roleId parameter
+   * @param roleId role to verify
+   */
+  isUserRol(roleId): Boolean {
+    let currentSession = this.getSession();
+    console.log(currentSession);    
+    console.log("roleId: " + roleId);
+    console.log(JSON.parse(currentSession).role == roleId);
+    return JSON.parse(currentSession).role == roleId;
+  }
+
+  /**
+   * Return the token string
+   */
+  getToken(): String {
     let currentSession = this.getSession();
     return JSON.parse(currentSession).token;
   }
 
+  /**
+   * close the current session
+   */
   Logout() {
     localStorage.removeItem('session');
     this.setUserData(new UserModel());

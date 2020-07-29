@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsConfig } from '../../../config/forms-config';
 import { SecurityService } from '../../../services/security.service';
-import { UserModel } from 'src/app/models/user.model';
+import { UserModel } from 'src/app/models/security/user.model';
 
 import MD5 from 'crypto-js/md5';
 

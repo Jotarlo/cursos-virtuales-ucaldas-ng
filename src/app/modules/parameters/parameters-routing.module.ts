@@ -10,7 +10,6 @@ import { CourseListComponent } from './course/course-list/course-list.component'
 import { CourseCreationComponent } from './course/course-creation/course-creation.component';
 import { CourseEditionComponent } from './course/course-edition/course-edition.component';
 
-
 const routes: Routes = [
   {
     path: 'area',
