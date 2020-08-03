@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <form [formGroup]="fgValidator">
+            <div class="form-group input-group">
+                <input formControlName="code" name="code" class="form-control" placeholder="Code" type="text">
+                <div class="warning-validator" *ngIf="fgv.code.errors && (fgv.code.dirty || fgv.code.touched)">
+                    <strong *ngIf="fgv.code.errors.required">
+                        This field is required.
+                    </strong>
+                    <strong *ngIf="fgv.code.errors.minlength">
+                        This field must be at least {{minLengthCode}} characters long.
+                    </strong>
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <input formControlName="name" name="name" class="form-control" placeholder="Name" type="text">
+                <div class="warning-validator" *ngIf="fgv.name.errors && (fgv.name.dirty || fgv.name.touched)">
+                    <strong *ngIf="fgv.name.errors.required">
+                        This field is required.
+                    </strong>
+                    <strong *ngIf="fgv.name.errors.minlength">
+                        This field must be at least {{minLengthName}} characters long.
+                    </strong>
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <input formControlName="content" name="content" class="form-control" placeholder="Content" type="text">
+                <div class="warning-validator" *ngIf="fgv.content.errors && (fgv.content.dirty || fgv.content.touched)">
+                    <strong *ngIf="fgv.content.errors.required">
+                        This field is required.
+                    </strong>
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <input formControlName="video" name="video" class="form-control" placeholder="Video URL" type="text">
+                <div class="warning-validator" *ngIf="fgv.video.errors && (fgv.video.dirty || fgv.video.touched)">
+                    <strong *ngIf="fgv.video.errors.required">
+                        This field is required.
+                    </strong>
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <input formControlName="attached" name="attached" class="form-control" placeholder="Attached" type="text">
+                <div class="warning-validator" *ngIf="fgv.attached.errors && (fgv.attached.dirty || fgv.attached.touched)">
+                    <strong *ngIf="fgv.attached.errors.required">
+                        This field is required.
+                    </strong>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="areaId">Course</label>
+                <select class="form-control" formControlName="areaId" id="areaId">
+                    <option *ngFor="let c of courseList" value="{{c.id}}">{{c.name}}</option>
+                </select>
+            </div>
+            <!-- form-group// -->
+            <div class="form-group">
+                <button type="button" (click)="saveNewRecord()" class="btn btn-primary"> Submit
+                </button>
+                &nbsp;&nbsp;
+                <a class="btn btn-warning" routerLink="/courses/section-list" role="button">Cancel</a>
+            </div> <!-- form-group// -->
+        </form>
+    </article>
+</div> <!-- card.// -->

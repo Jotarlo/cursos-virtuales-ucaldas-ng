@@ -6,9 +6,6 @@ import { AreaEditionComponent } from './area/area-edition/area-edition.component
 import { FacultyListComponent } from './faculty/faculty-list/faculty-list.component';
 import { FacultyCreationComponent } from './faculty/faculty-creation/faculty-creation.component';
 import { FacultyEditionComponent } from './faculty/faculty-edition/faculty-edition.component';
-import { CourseListComponent } from './course/course-list/course-list.component';
-import { CourseCreationComponent } from './course/course-creation/course-creation.component';
-import { CourseEditionComponent } from './course/course-edition/course-edition.component';
 
 const routes: Routes = [
   {
@@ -33,18 +30,6 @@ const routes: Routes = [
   {
     path: 'faculty-edition/:id',
     component: FacultyEditionComponent
-  },
-  {
-    path: 'course',
-    component: CourseListComponent
-  },
-  {
-    path: 'course-creation',
-    component: CourseCreationComponent
-  },
-  {
-    path: 'course-edition',
-    component: CourseEditionComponent
   }
 ];
 
