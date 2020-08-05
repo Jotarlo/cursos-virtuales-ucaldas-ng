@@ -9,6 +9,7 @@ import { FooterComponent } from './public/master-page/footer/footer.component';
 import { NavbarComponent } from './public/master-page/navbar/navbar.component';
 import { SideMenuComponent } from './public/master-page/side-menu/side-menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CoursesModule } from './modules/courses/courses.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CoursesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

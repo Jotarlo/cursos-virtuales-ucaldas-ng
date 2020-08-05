@@ -23,6 +23,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     NgxSpinnerModule,
     NgxPaginationModule
+  ],
+  exports: [
+    CoursesHomeListComponent
   ]
 })
 export class CoursesModule { }

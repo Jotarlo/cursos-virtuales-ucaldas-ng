@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { SectionService } from '../../../../services/courses/section.service';
 import { CourseModel } from 'src/app/models/course/course.model';
 import { CourseService } from 'src/app/services/courses/course.service';
+
 declare const ShowNotificationMessage: any;
 
 @Component({
