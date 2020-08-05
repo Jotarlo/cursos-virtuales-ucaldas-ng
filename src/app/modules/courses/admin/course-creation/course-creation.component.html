@@ -2,7 +2,20 @@
 
 <div class="card bg-light">
     <article class="card-body mx-auto" style="max-width: 400px;">
+        <form [formGroup]="uploadForm">
+            <div class="form-group input-group">
+                <input formControlName="file" (change)="onFileSelect($event)" name="image" class="form-control"
+                    type="file">
+                <input type="button" value="Upload" (click)="UploadImage()" />
+                <div class="warning-validator" *ngIf="fgv.image.errors && (fgv.image.dirty || fgv.image.touched)">
+                    <strong *ngIf="fgv.image.errors.required">
+                        This field is required.
+                    </strong>
+                </div>
+            </div>
+        </form>
         <form [formGroup]="fgValidator">
+            <input type="text" formControlName="image" />
             <div class="form-group input-group">
                 <input formControlName="code" name="code" class="form-control" placeholder="Code" type="text">
                 <div class="warning-validator" *ngIf="fgv.code.errors && (fgv.code.dirty || fgv.code.touched)">
@@ -61,14 +74,6 @@
                 <div class="warning-validator"
                     *ngIf="fgv.duration.errors && (fgv.duration.dirty || fgv.duration.touched)">
                     <strong *ngIf="fgv.name.errors.required">
-                        This field is required.
-                    </strong>
-                </div>
-            </div>
-            <div class="form-group input-group">
-                <input formControlName="image" name="image" class="form-control" type="file">
-                <div class="warning-validator" *ngIf="fgv.image.errors && (fgv.image.dirty || fgv.image.touched)">
-                    <strong *ngIf="fgv.image.errors.required">
                         This field is required.
                     </strong>
                 </div>

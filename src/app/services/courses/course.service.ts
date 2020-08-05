@@ -4,7 +4,7 @@ import { SecurityService } from '../security.service';
 import { Observable } from 'rxjs';
 import { CourseModel } from 'src/app/models/course/course.model';
 import { ServiceConfig } from 'src/app/config/service.config';
-
+import { UploadFileModel } from '../../models/upload/upload.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,6 +48,14 @@ export class CourseService {
 
   removeRecord(recordId: String): Observable<any> {
     return this.http.delete<any>(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    });
+  }
+
+  uploadImage(formData): Observable<UploadFileModel> {
+    return this.http.post<UploadFileModel>(`${ServiceConfig.BASE_URL}courseImage`, formData, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.token}`
       })

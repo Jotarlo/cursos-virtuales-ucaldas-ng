@@ -19,6 +19,7 @@ declare const ShowNotificationMessage: any;
 export class CourseCreationComponent implements OnInit {
 
   fgValidator: FormGroup;
+  uploadForm: FormGroup;
   minLengthName: number = FormsConfig.MIN_LENGTH_NAME;
   minLengthCode: number = FormsConfig.MIN_LENGTH_CODE;
   facultyList: FacultyModel[];
@@ -33,6 +34,7 @@ export class CourseCreationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.FormUploadBuilding();
     this.FormBuilding();
     this.FillAreaSelect();
     this.FillFacultySelect();
@@ -41,7 +43,7 @@ export class CourseCreationComponent implements OnInit {
   FillAreaSelect() {
     this.areaService.getAllRecords().subscribe(
       data => {
-        this.areaList = data;        
+        this.areaList = data;
       },
       error => {
         ShowNotificationMessage("Error loading area list.");
@@ -110,5 +112,40 @@ export class CourseCreationComponent implements OnInit {
 
   get fgv() {
     return this.fgValidator.controls;
+  }
+
+  /** Upload file region */
+
+  FormUploadBuilding() {
+    this.uploadForm = this.fb.group({
+      file: ['', [Validators.required]]
+    });
+  }
+
+  get fgUpload() {
+    return this.uploadForm.controls;
+  }
+
+  UploadImage() {
+    const formData = new FormData();
+    formData.append('file', this.fgUpload.file.value);
+    this.service.uploadImage(formData).subscribe(
+      data => {
+        console.log("Filename. " + data);
+
+        this.fgv.image.setValue(data.filename);
+        ShowNotificationMessage("The image has been uploaded successfuly.");
+      },
+      err => {
+        ShowNotificationMessage("Error uploading image.");
+      }
+    );
+  }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const f = event.target.files[0];
+      this.fgUpload.file.setValue(f);
+    }
   }
 }
