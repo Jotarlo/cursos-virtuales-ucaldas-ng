@@ -6,4 +6,5 @@ export class SectionModel {
     content: String;
     video: String;
     attached: String;
+    courseId: String;
 }

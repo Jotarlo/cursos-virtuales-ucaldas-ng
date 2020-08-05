@@ -42,16 +42,18 @@
                 </div>
             </div>
             <div class="form-group input-group">
-                <input formControlName="attached" name="attached" class="form-control" placeholder="Attached" type="text">
-                <div class="warning-validator" *ngIf="fgv.attached.errors && (fgv.attached.dirty || fgv.attached.touched)">
+                <input formControlName="attached" name="attached" class="form-control" placeholder="Attached"
+                    type="text">
+                <div class="warning-validator"
+                    *ngIf="fgv.attached.errors && (fgv.attached.dirty || fgv.attached.touched)">
                     <strong *ngIf="fgv.attached.errors.required">
                         This field is required.
                     </strong>
                 </div>
             </div>
             <div class="form-group">
-                <label for="areaId">Course</label>
-                <select class="form-control" formControlName="areaId" id="areaId">
+                <label for="courseId">Course</label>
+                <select class="form-control" formControlName="courseId" id="courseId">
                     <option *ngFor="let c of courseList" value="{{c.id}}">{{c.name}}</option>
                 </select>
             </div>

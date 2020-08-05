@@ -29,12 +29,16 @@ export class SectionCreationComponent implements OnInit {
 
   ngOnInit(): void {
     this.FormBuilding();
+    this.fillCourseSelect();
+  }
+
+  fillCourseSelect() {
     this.courseService.getAllRecords().subscribe(
       data => {
         this.courseList = data;
       },
-      err=>{
-        
+      err => {
+
       }
     );
   }
@@ -46,6 +50,7 @@ export class SectionCreationComponent implements OnInit {
       content: ['', [Validators.required]],
       video: ['', [Validators.required]],
       attached: ['', [Validators.required]],
+      courseId: ['', [Validators.required]],
     });
   }
 
@@ -76,6 +81,7 @@ export class SectionCreationComponent implements OnInit {
     model.video = this.fgv.video.value;
     model.content = this.fgv.content.value;
     model.attached = this.fgv.attached.value;
+    model.courseId = this.fgv.courseId.value;
     return model;
   }
 
